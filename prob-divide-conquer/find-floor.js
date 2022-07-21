@@ -23,6 +23,4 @@ function findFloor(arr, val) {
   }
 }
 
-console.log(findFloor([1, 2, 8, 10, 10, 12, 19], 5));
-
 module.exports = findFloor;
