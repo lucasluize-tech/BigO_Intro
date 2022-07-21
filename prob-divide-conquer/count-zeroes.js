@@ -1,17 +1,30 @@
-function countZeroes(arr) {
-  let end = arr.length - 1;
-  let count = 0;
+// Constraint : Complexity O(log n)
 
-  while (arr[end] === 0) {
-    count++;
-    end -= 1;
+function countZeroes(arr) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    // if array starts with zero , than qty = array.length
+    if (arr[start] === 0) return arr.length - start;
+
+    if (arr[mid] !== 0) {
+      start = mid + 1;
+    }
+    if (arr[mid] === 0 && arr[mid - 1] === 1) {
+      start = mid;
+    }
+    if (arr[mid] === 0 && arr[mid - 1] === 0) {
+      start = mid - 1;
+    }
   }
-  return count;
+  return 0;
 }
 
-countZeroes([1, 1, 1, 1, 0, 0]);
-countZeroes([1, 0, 0, 0, 0]);
-countZeroes([0, 0, 0]);
-countZeroes([1, 1, 1, 1]);
+console.log(countZeroes([1, 1, 1, 1, 0, 0]));
+console.log(countZeroes([1, 0, 0, 0, 0]));
+console.log(countZeroes([0, 0, 0]));
+console.log(countZeroes([1, 1, 1, 1]));
 
 module.exports = countZeroes;
