@@ -25,8 +25,6 @@ let's try a Binary Search , which will need a sorted array.
 
 - repeat process until found.
 
-
-
 ```js
 function binarySearchIterative(arr, target){
     let start = 0;
@@ -56,7 +54,6 @@ function binarySearchRecursively(arr, target, start, end){
         return binarySearchRecursively(arr, target, start, mp-1)
     }
 }
-
 ```
 
 That's it! watch out for small errors like the operators or the + and - pointers.
