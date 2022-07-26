@@ -158,6 +158,21 @@ class LinkedList {
     }
     return total / this.length;
   }
+
+  reverse() {
+    let currentNode = this.head;
+    let previousNode = null;
+    let nextNode = null;
+
+    while (currentNode !== null) {
+      nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+    this.tail = this.head;
+    this.head = previousNode;
+  }
 }
 
 module.exports = LinkedList;
