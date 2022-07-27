@@ -175,4 +175,40 @@ class LinkedList {
   }
 }
 
+function sortTwoLists(a, b) {
+  let listA = new LinkedList(a);
+  let listB = new LinkedList(b);
+  // start new list with dummy node.
+  let listC = new LinkedList([0]);
+
+  let curA = listA.head;
+  let curB = listB.head;
+  // while new list length is less or equal
+  while (listC.length <= listA.length + listB.length) {
+    // if no nodes on list A
+    if (curA == null) {
+      listC.push(curB.val);
+      continue;
+    }
+    // if no nodes on list B
+    if (curB == null) {
+      listC.push(curA.val);
+      continue;
+    }
+    // compare nodes
+    if (curA.val <= curB.val) {
+      listC.push(curA.val);
+      curA = curA.next;
+      continue;
+    } else {
+      listC.push(curB.val);
+      curB = curB.next;
+      continue;
+    }
+  }
+  // remove dummy node.
+  listC.shift();
+  return listC;
+}
+
 module.exports = LinkedList;
