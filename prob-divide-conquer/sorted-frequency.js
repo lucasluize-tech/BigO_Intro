@@ -23,7 +23,7 @@ function sortedFrequency(arr, val) {
       return count;
     }
 
-    // if mid less than value
+    // if mid diff than value
     if (arr[mid] < val) {
       start = mid + 1;
     } else {
