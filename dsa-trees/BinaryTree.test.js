@@ -123,7 +123,7 @@ describe("areCousins", function () {
   });
 });
 
-describe.only("serialize and deserialize", function () {
+describe("serialize and deserialize", function () {
   let myTree;
 
   beforeEach(function () {

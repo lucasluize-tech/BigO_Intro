@@ -101,7 +101,6 @@ class BinaryTree {
         );
         if (check.length) cousins.push(check[0]);
       }
-      console.log(cousins);
       if (current.left) toVisit.push(current.left);
       if (current.right) toVisit.push(current.right);
     }
@@ -133,34 +132,7 @@ class BinaryTree {
   static deserialize(string) {
     string.trim();
     let array = string.split(" ");
-    let tree;
-    while (array.length) {
-      if (tree) {
-        tree.root.left = new BinaryTreeNode(
-          array[0],
-          new BinaryTreeNode(array[1]),
-          new BinaryTreeNode(array[2])
-        );
-        array = array.slice(3);
-      } else if (tree) {
-        tree.root.right = new BinaryTreeNode(
-          array[0],
-          new BinaryTreeNode(array[1]),
-          new BinaryTreeNode(array[2])
-        );
-        array = array.slice(3);
-      } else {
-        let node = new BinaryTreeNode(
-          array[0],
-          new BinaryTreeNode(array[1]),
-          new BinaryTreeNode(array[2])
-        );
-        array.shift();
-        array.shift();
-        array.shift();
-        tree = new BinaryTree(node);
-      }
-    }
+    // still need to implement somthing here
     return tree;
   }
 
