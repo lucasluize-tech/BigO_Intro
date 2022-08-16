@@ -89,6 +89,29 @@ Every node in tree could be technically it's own tree root.
 
 Tree structures with only left and right nodes.
 
+## Binary Search Trees
+
+````js
+class BinaryTreeNode {
+  constructor(val, right, left){
+    this.val = val;
+    this.right = right;
+    this.left = left;
+  }
+}
+
+class BinarySearchTree {
+  constructor(root){
+    this.root = root;
+  }
+}
+
+insert(node){
+  let current = this.root;
+  current.val > node.val ? this.root.left = node : this.root.right = node;
+}
+
+
 ## Bidirectional Node
 
 ```js
@@ -98,4 +121,4 @@ class BidirectionalNode {
     this.children = children;
   }
 }
-```
+````
