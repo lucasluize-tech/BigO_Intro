@@ -151,7 +151,6 @@ class BinarySearchTree {
         }
       }
       if (nextRight) {
-        debugger;
         if (nextRight.val === val) {
           if (!nextRight.left && !nextRight.right)
             return (current.right = null);

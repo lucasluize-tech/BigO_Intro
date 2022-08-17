@@ -91,9 +91,9 @@ Tree structures with only left and right nodes.
 
 ## Binary Search Trees
 
-````js
+```js
 class BinaryTreeNode {
-  constructor(val, right, left){
+  constructor(val, right, left) {
     this.val = val;
     this.right = right;
     this.left = left;
@@ -101,24 +101,58 @@ class BinaryTreeNode {
 }
 
 class BinarySearchTree {
-  constructor(root){
+  constructor(root) {
     this.root = root;
   }
+  find(val) {
+    let current = this.root;
+    while (current) {
+      if (current.val === val) return current;
+      current.val > val ? (current = current.right) : (current = current.left);
+    }
+  }
+}
+```
+
+## Balancing a tree
+
+We want to minimize the height of a tree so we can benefit from its structure.
+
+Red-Black Tree -> self-balancing tree ( we add color to the node for efficiency, null
+nodes are black, red node does not have a red child)
+AVL Tress -> Simpler algorith Keeps Balanced.
+
+## Traversal of a BST
+
+```js
+traverseInOrder(node=this.root){
+  console.log(node.val);
+  if (node.left) this.traverse(node.left);
+  console.log(node.val)
+  if (node.right) this.traverse(node.right)
 }
 
-insert(node){
-  let current = this.root;
-  current.val > node.val ? this.root.left = node : this.root.right = node;
+traversePreOrder(node=this.root){
+  console.log(node.val);
+  if (node.left) this.traverse(node.left);
+  if (node.right) this.traverse(node.right);
 }
 
+traversePostOrder(node=this.root){
+  if (node.left) this.traverse(node.left);
+  if (node.right) this.traverse(node.right);
+  console.log(val)
+}
+```
 
 ## Bidirectional Node
 
 ```js
 class BidirectionalNode {
-  constructor(parent, children = []) {
+  constructor(val, parent, children = []) {
+    this.val = val;
     this.parent = parent;
     this.children = children;
   }
 }
-````
+```
