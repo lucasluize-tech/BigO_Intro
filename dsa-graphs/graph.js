@@ -57,7 +57,6 @@ class Graph {
         }
       }
     }
-    console.log(result);
     return result;
   }
 
