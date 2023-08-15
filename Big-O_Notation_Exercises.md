@@ -91,7 +91,7 @@ function subtotals(array) {
 
 ---
 
-Time Complexity: **O(n)** is .include linear?
+Time Complexity: **O(n)**
 
 ```js
 function vowelCount(str) {
