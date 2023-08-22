@@ -6,10 +6,14 @@ class Node {
 }
 
 class LinkedList {
-  constructor() {
+  constructor(vals = []) {
     this.head = null;
     this.tail = null;
     this.length = 0;
+
+    for (let val of vals) {
+      this.push(val);
+    }
   }
 
   push(value) {
@@ -49,10 +53,12 @@ class LinkedList {
 
   print() {
     let cur = this.head;
+    let result = [];
     while (cur) {
-      console.log(cur.data);
+      result.push(cur.data);
       cur = cur.next;
     }
+    return console.log(result);
   }
 
   search(value) {
@@ -118,7 +124,7 @@ class LinkedList {
   }
 
   middleIndex() {
-    return this.searchIndex(Math.floor(this.length / 2));
+    return this.searchIndex(Math.floor(this.length - 1 / 2));
   }
 
   middleValue() {
@@ -142,6 +148,70 @@ class LinkedList {
     }
     return this.print();
   }
+
+  average() {
+    let cur = this.head;
+    let sum = 0;
+    let count = 0;
+
+    while (cur) {
+      sum += cur.data;
+      count++;
+      cur = cur.next;
+    }
+    return sum / count;
+  }
+
+  pivot(value) {
+    let cur = this.head;
+    let prev = null;
+    let head;
+    let size = this.length;
+
+    for (let i = 0; i < size - 1; i++) {
+      if (cur.data < value) {
+        if (!head) head = cur;
+        prev = cur;
+        cur = cur.next;
+      } else {
+        if (prev) {
+          prev.data >= value ? null : (prev.next = cur.next);
+        }
+        this.tail.next = cur;
+        this.tail = cur;
+
+        cur = cur.next;
+      }
+    }
+    this.head = head;
+    this.tail.next = null;
+    return this.print();
+  }
+}
+
+function concatTwoLists(list1, list2) {
+  let cur = list1.head;
+  while (cur.next) {
+    cur = cur.next;
+  }
+  cur.next = list2.head;
+  return list1;
+}
+
+function concatAndSort(list1, list2) {
+  let list = new LinkedList();
+  l1cur = list1.head;
+  l2cur = list2.head;
+  while (l1cur && l2cur) {
+    if (l1cur.data < l2cur.data) {
+      list.push(l1cur.data);
+      l1cur = l1cur.next;
+    } else {
+      list.push(l2cur.data);
+      l2cur = l2cur.next;
+    }
+  }
+  return list;
 }
 
 const list = new LinkedList();
@@ -180,3 +250,12 @@ list.push(2);
 list.print();
 console.log("----- remove duplicates -----");
 list.removeDuplicates();
+
+console.log("----- average -----");
+console.log(list.average());
+
+console.log("----- pivot -----");
+let ll = new LinkedList([7, 6, 2, 3, 9, 1, 1]);
+ll.pivot(5);
+ll = new LinkedList([7, 6, 2, 5, 3, 5, 9, 1, 1]);
+ll.pivot(5);
